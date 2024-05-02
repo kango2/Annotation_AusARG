@@ -1,0 +1,6 @@
+- Variables needed:
+$input  Path to input directory containing all the .bam files
+$output Path to output directory where the gff3 will be generated
+
+
+qsub -P ${PROJECT} -v input=/path/to/bam/directory,output=/path/to/output/directory AGAT_bam2gff3.sh

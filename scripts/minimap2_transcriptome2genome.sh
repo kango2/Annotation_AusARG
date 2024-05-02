@@ -20,7 +20,7 @@ else
 fi
 
 
-#These alignments are super fast, takes about 1 minute
+# These alignments are super fast, takes about 1 minute
 minimap2 -t ${PBS_NCPUS} -ax splice:hq \
 ${genome} \
 ${transcriptome} | samtools sort -@ ${PBS_NCPUS} -O BAM -o ${output}/${base}_2genome.bam

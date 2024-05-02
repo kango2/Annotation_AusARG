@@ -1,7 +1,7 @@
 - Variables needed:
-$genome Path to your genome, needs to be in fasta format
-$transcriptome  Path to your genome, needs to be in fasta format with either .fa or .fasta suffix
-#output Path to your output directory, this is where the bam files will be generated
+$genome Path to genome, needs to be in fasta format
+$transcriptome  Path to transcriptome, needs to be in fasta format with either .fa or .fasta suffix
+#output Path to output directory where the bam files will be generated
 
 
 qsub -P ${PROJECT} -v genome=/path/to/genome.fa,transcriptome=/path/to/transcriptome.fa,output=/path/to/output/directory minimap2_transcriptome2genome.sh
