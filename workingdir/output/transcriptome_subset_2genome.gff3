@@ -1,0 +1,18 @@
+##gff-version 3
+scaffold_1	est2genome	cDNA_match	259138	265032	412	+	.	ID=match1;aligned_identity=98.0
+scaffold_1	est2genome	cDNA_match_part	259138	259314	412	+	.	ID=match1.p1;Parent=match1;Target=AA045725_Brain_ZWf_DN20936_c0_g2_i1 1 177
+scaffold_1	est2genome	cDNA_match_part	262893	263059	412	+	.	ID=match1.p1;Parent=match1;Target=AA045725_Brain_ZWf_DN20936_c0_g2_i1 178 344
+scaffold_1	est2genome	cDNA_match_part	264867	265032	412	+	.	ID=match1.p1;Parent=match1;Target=AA045725_Brain_ZWf_DN20936_c0_g2_i1 345 510
+scaffold_1	est2genome	cDNA_match	283524	297161	1986	-	.	ID=match2;aligned_identity=95.4
+scaffold_1	est2genome	cDNA_match_part	283524	284149	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1950 2571
+scaffold_1	est2genome	cDNA_match_part	285648	285779	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1818 1949
+scaffold_1	est2genome	cDNA_match_part	285947	286084	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1680 1817
+scaffold_1	est2genome	cDNA_match_part	286571	286696	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1554 1679
+scaffold_1	est2genome	cDNA_match_part	288291	288380	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1464 1553
+scaffold_1	est2genome	cDNA_match_part	289959	290144	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1192 1463
+scaffold_1	est2genome	cDNA_match_part	291260	291419	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1032 1191
+scaffold_1	est2genome	cDNA_match_part	292732	292923	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 840 1031
+scaffold_1	est2genome	cDNA_match_part	293078	293296	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 621 839
+scaffold_1	est2genome	cDNA_match_part	294432	294567	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 485 620
+scaffold_1	est2genome	cDNA_match_part	296146	296334	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 296 484
+scaffold_1	est2genome	cDNA_match_part	296863	297161	1986	-	.	ID=match2.p1;Parent=match2;Target=mixedID_Ovary_ZWf_DN11255_c0_g2_i1 1 295

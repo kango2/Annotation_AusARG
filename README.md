@@ -18,6 +18,7 @@ Repository to keep track of changes we are making to optimise the annotation scr
 - /final_scripts contain scripts that are considered finished.
 - /test_data contain some test data.
 - /extrinsic contain the default extrinsic directory content in Augustus
+- /workingdir directory where I test scripts
 - extrinsic.MPE.cfg is the hints bonus/malus config file I have been using, I made a copy from /extrinsic to the master directory to work on it.
 - Need to adjust this config file so it make more sense, for example by default the feature "start" gets a malus of 0.8 if Augustus predicts a "start" at a region with no "start" hints supporting it. Our new hints file (or any old ones) by nature has no "start" feature in it to begin with, so all start predicted by Augustus automatically gets a 0.8 malus.
 - Our hints file only has exonpart and intronpart, so these are the only two feature we should configure
