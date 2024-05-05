@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -N Augustus_training
-#PBS -l ncpus=16,walltime=48:00:00,storage=gdata/if89+gdata/xl04,mem=50GB,jobfs=50GB
+#PBS -l ncpus=8,walltime=48:00:00,storage=gdata/if89+gdata/xl04,mem=50GB,jobfs=50GB
 #PBS -j oe
 
 
