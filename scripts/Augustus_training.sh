@@ -35,8 +35,8 @@ ${workingdir}/Augustus/config/species/${species}/${species}_metapars.utr.cfg \
 > ${workingdir}/Augustus/config/species/${species}/${species}_metapars_and_utr.cfg
 
 # an initial training using genes not selected for optimising, this is fast
-etraining --species=${species} --UTR=on ${workingdir}/Augustus/training/training.gb.train
-augustus --species=${species} --UTR=on ${workingdir}/Augustus/training/training.gb.test | tee first_evaluation.out
+etraining --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training.gb.train
+augustus --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training.gb.test | tee first_evaluation.out
 grep -A 36 Evaluation first_evaluation.out > ${workingdir}/first_evaluation.report
 
 # Now we optimize with 500 genes, 200 for evaluation and all 500 for training, the max 5 rounds has been chosen but it will finish earlier if no improvement are found
@@ -52,10 +52,10 @@ ${workingdir}/Augustus/training/training.gb.test \
 > ${workingdir}/OptimiseAugustus.running
 
 # Retrain after optimization
-etraining --species=${species} --UTR=on ${workingdir}/Augustus/training/training.gb.train
+etraining --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training.gb.train
 
 # final evaluation
-augustus --species=${species} --UTR=on ${workingdir}/Augustus/training/training.gb.test | tee final_evaluation.out
+augustus --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training.gb.test | tee final_evaluation.out
 grep -A 36 final_evaluation.out > ${workingdir}/final_evaluation.report
 
 
