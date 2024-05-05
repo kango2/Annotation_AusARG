@@ -1,0 +1,8 @@
+- Variables needed:
+$workingdir  Path to working directory
+$training   Path the 500 training genes files in .gff3 format, should only contain CDS, three_prime_utr and five_prime_utr in 3rd column
+$genome Path to your softmasked genome
+$species    Name of your species, use "_" character to replace whitespaces. e.g. "Homo_sapien". 
+
+
+qsub -P ${PROJECT} -v input=/path/to/bam/directory,output=/path/to/output/directory AGAT_bam2gff3.sh
