@@ -5,4 +5,4 @@ $genome Path to your softmasked genome
 $species    Name of your species, use "_" character to replace whitespaces. e.g. "Homo_sapien". 
 
 
-qsub -P ${PROJECT} -v input=/path/to/bam/directory,output=/path/to/output/directory AGAT_bam2gff3.sh
+qsub -P ${PROJECT} -v workingdir=/path/to/working/directory,training=/path/to/training.gff3,genome=/path/to/genome.fa,species=Species_name AGAT_bam2gff3.sh
