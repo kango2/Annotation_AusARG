@@ -12,6 +12,7 @@ Repository to keep track of changes we are making to optimise the annotation scr
 - New script to get rid of redundant transcripts between different transcriptome generated from different samples. (cdhit-est)
 - New script to convert gff3 output into augustus hints.
 - Adjust bonus/malus in Augustus hints configuration file to accomodate our new hints. (extrinsic.cfg)
+- Can potentially Adjust training script so that it trains UTR meta parameters at the same time as exon parameters
 
 ### Things to note
 - /scripts contain scripts that are being worked on.
@@ -23,3 +24,4 @@ Repository to keep track of changes we are making to optimise the annotation scr
 - Need to adjust this config file so it make more sense, for example by default the feature "start" gets a malus of 0.8 if Augustus predicts a "start" at a region with no "start" hints supporting it. Our new hints file (or any old ones) by nature has no "start" feature in it to begin with, so all start predicted by Augustus automatically gets a 0.8 malus.
 - Our hints file only has exonpart and intronpart, so these are the only two feature we should configure
 - Or maybe we could change hints file to exon and intron
+- Augustus gene prediction step bottleneck is on the longest scaffold, for lizards (longest around 300Mbp) it takes 16-18 hours. Could potentially try out Pygustus which is a python version of augustus that the devs are making, it apparently is able to split scaffolds into pieces and run them in parallel, then merge them
