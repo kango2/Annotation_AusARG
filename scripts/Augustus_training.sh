@@ -47,6 +47,7 @@ optimize_augustus.pl \
 ${workingdir}/Augustus/training/training.gb.test \
 --onlytrain=${workingdir}/Augustus/training/training.gb.train \
 --UTR=on \
+--stopCodonExcludedFromCDS=f \
 --metapars=${workingdir}/Augustus/config/species/${species}/${species}_metapars_and_utr.cfg \
 --cleanup=1 \
 > ${workingdir}/OptimiseAugustus.running
