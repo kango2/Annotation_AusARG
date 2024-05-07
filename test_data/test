@@ -1,0 +1,12 @@
+Chr1	est2genome	exon	1	18	.	+	.	ID=match1.p1;Parent=match1;Target=target1	target1	3	20	6	90
+Chr1	est2genome	exon	41	60	.	+	.	ID=match1.p2;Parent=match1;Target=target1	target1	21	40	6	90
+Chr1	est2genome	exon	81	100	.	+	.	ID=match1.p3;Parent=match1;Target=target1	target1	41	60	6	90
+Chr1	est2genome	exon	121	140	.	+	.	ID=match1.p4;Parent=match1;Target=target1	target1	61	80	6	90
+Chr1	est2genome	exon	161	180	.	+	.	ID=match1.p4;Parent=match1;Target=target1	target1	81	100	6	90
+Chr1	est2genome	exon	401	420	.	+	.	ID=match2.p1;Parent=match2;Target=target2	target2	1	20	31	75
+Chr1	est2genome	exon	441	460	.	+	.	ID=match2.p2;Parent=match2;Target=target2	target2	21	40	31	75
+Chr1	est2genome	exon	481	500	.	+	.	ID=match2.p3;Parent=match2;Target=target2	target2	41	60	31	75
+Chr1	est2genome	exon	521	540	.	+	.	ID=match2.p4;Parent=match2;Target=target2	target2	61	80	31	75
+Chr1	est2genome	exon	561	580	.	+	.	ID=match2.p4;Parent=match2;Target=target2	target2	81	100	31	75
+
+Chr1	est2genome	exon	1	800	.	+	.	ID=match2.p4;Parent=match2;Target=target2	target3	1	800	41	770

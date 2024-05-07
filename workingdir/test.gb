@@ -1,0 +1,50 @@
+LOCUS       chr1_1030-1970   941 bp  DNA
+FEATURES             Location/Qualifiers
+     source          1..941
+     CDS             21..921
+                     /gene="ID=mRNA1;Name=Sample mRNA 1"
+BASE COUNT     209 a   256 c  241 g   235 t
+ORIGIN
+        1 cgcggctatc cagcaacgtc ataaaagtgt ctgggctctc ctcgtatttt cttgttctca
+       61 tcttcgggct tggcaagatt tacaggctgc ttcatcctac tcttagtgtc acaatgagtg
+      121 agttctcatg acagttccct tagtctaatt gttcgaaggt gttataaagg ggctccattt
+      181 agaccggtgt cagacactag cagcctcact ttggccaatt gcatttctca ggagtttgat
+      241 ggcctcccct ccggaagcag ttctaggcca tgcaccgctc ccaggttgga ttgtgcattg
+      301 aacacagact cagctcagtc acttctgcct ctccgacagt ggccagcaat gtccgccacc
+      361 acaaggcccc gcgccggaaa aggcacgaat tcaagcgtga cagcctcttg cttcctccct
+      421 tcagagtcac tttgaccact tccccgcaga ggcagcttgc cctccggccc ccggaagtca
+      481 cacgcgctgc tggttggttg caggagagga gcctcagctg gctggccact ggcgtcggac
+      541 gtgcgcttgc cggtggattg gggctgagcc agggaggcgg tggtagtcgc tacagtcggt
+      601 tccgtggcac tggaaacaat ctcgaagttt ttgcggagct tttggatcca tttccaaatc
+      661 ttgcaactgt aatccgctgg ttaatgtaac caaactgtct taggtcctgg gacactgcaa
+      721 tctgagcgat tatgtctcgt tactgtcctg ccacttctaa accccgcgta ccaaaatatt
+      781 tgaggatctg atcgggggaa gattcactgg catcttgtca aatcttcgtt atcggcagtc
+      841 aagaaggcgg agctaccacc tccctcccac aaatctaggg agtaggagtc gacaagaata
+      901 ctgcaaaagg aagaggggga aacacaagag gttgaccaat t
+//
+LOCUS       chr1_2080-3020   941 bp  DNA
+FEATURES             Location/Qualifiers
+     source          1..941
+     mRNA            complement(21..921)
+                     /gene="ID=mRNA2;Name=Sample mRNA 2"
+     CDS             complement(121..921)
+                     /gene="ID=mRNA2;Name=Sample mRNA 2"
+BASE COUNT     243 a   260 c  182 g   256 t
+ORIGIN
+        1 acacacagtc tcctgcacct gggttgatgc aaaaacacgt gtcgcctcct ctcgcttcgg
+       61 ttactgttca ttgtttgacg cgggaaacgg agcactcgtg caagcacgca agcaccggct
+      121 tgccacctgt tcacagcctg gacgcaagaa ccggtactaa cacccaccaa tttcagacac
+      181 cttcctcctc ttctcaatgg aacaccttag aaatgtagta ggaacacaat tttctcggca
+      241 gcgcttccca aatgtataag ctgcaggctt gtggagggga agtgcatagg cggatttttc
+      301 acaattcacc cgcacaaaac gaaacaattt atcaactttt aagatgtaag tacctccttc
+      361 tgcaattatt cagaactgta taccaaattt tcaagcaaat tgaacacaat ttttttatta
+      421 gacaaacaat tagattctct gcaaatcttg actatttatt caatttcatt taaatggttg
+      481 gagttcggtc agataaattg tactaagaaa attccaatcg cagcgttcac aaaagtttgg
+      541 gtggttttcc gtttctagct agaaaactcc agtttcagct acaatctgga tttccttctc
+      601 ccgcttttta catactcgct ctgagctctc ggccacaatt tctgggcacg gagcgagacc
+      661 ttctccggac tcagcaacac ggttgggtct ctcgtacccc caggtattac ttgtcaccgc
+      721 cgccaggggg tcagacaacc ccctgcaaac tccccgacgc tccgtgtact cccaacgaac
+      781 gcttctcacc cccaatgctc ggttacccgg catcttcata cttctaagcc tgaattaggt
+      841 ggcccccaca gagagccact caaatctggg acaaaagctt ccggctttct gttggcagca
+      901 ttacccaccg tttgcctgtg gattgcaatt tctgaaattt g
+//

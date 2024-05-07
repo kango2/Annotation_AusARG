@@ -95,3 +95,16 @@ awk -F'\t' -v OFS='\t' '$3 == "exon" || $3 == "intron" { match($9, /Parent=([^;\
 # Pipe output to awk command to replace exon with exonpart, intron with intronpart
 awk 'BEGIN{FS=OFS="\t"} $3=="exon" {$3="exonpart"} 1' | awk 'BEGIN{FS=OFS="\t"} $3=="intron" {$3="intronpart"} 1' > ${output}/${base}.hints.gff3
 
+
+
+
+
+
+
+
+
+
+
+module load cdhit/4.8.1
+
+cd-hit -i basdu.selected.pep.fa -o basdu.selected.pep.cdhit -c 0.50 -aS 0.20 -g 1 -d 0 -n 3 -M 160000 -T 48

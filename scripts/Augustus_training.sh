@@ -57,7 +57,7 @@ etraining --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCD
 
 # final evaluation
 augustus --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training.gb.test | tee final_evaluation.out
-grep -A 36 final_evaluation.out > ${workingdir}/final_evaluation.report
+grep -A 36 Evaluation final_evaluation.out > ${workingdir}/final_evaluation.report
 
 
 
