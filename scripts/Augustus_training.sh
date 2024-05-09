@@ -20,7 +20,7 @@ export AUGUSTUS_CONFIG_PATH=${workingdir}/Augustus/config
 
 # ${training} is a new variable that should be the path to the 500 manually selected training genes in gff3 format, containing the features CDS, three_prime_utr and five_prime_utr in 3rd column
 cd ${workingdir}/Augustus/training
-gff2gbSmallDNA.pl --softmasked ${training} ${genome} 2000 ${workingdir}/Augustus/training/training.gb
+gff2gbSmallDNA.pl ${training} ${genome} 2000 ${workingdir}/Augustus/training/training.gb
 
 # Split the 500 into 200 (.test) for evaluation test and 300 (.train) for training
 randomSplit.pl training.gb 200
