@@ -238,7 +238,7 @@ awk '$3 == "gene"' ${workingdir}/TrainingGene/Training_gene.gff3 | awk 'BEGIN {F
 }' | awk 'BEGIN {FS="\t"; OFS="\t"} {if ($2 <= 0) {$2 = "1"} {print}}' > ${workingdir}/workingdir/Training_gene.bed
 
 bedtools intersect -a ${workingdir}/workingdir/Training_gene.bed -b ${workingdir}/workingdir/Training_gene.bed -wa -wb | \
-awk '$4 != 10' | sort | uniq > ${workingdir}/workingdir/overlapping.list
+awk '$4 != 10 {print $10}' | sort | uniq > ${workingdir}/workingdir/overlapping.list
 grep -w -v -f ${workingdir}/workingdir/overlapping.list ${workingdir}/TrainingGene/Training_gene.gff3 > ${workingdir}/TrainingGene/Training_gene_NoOverlap.gff3
 
 ### Now Process the general gff3 for into gff3 hints format, We will not be getting rid of overlap and instead will provide these and let augustus decide which is better
