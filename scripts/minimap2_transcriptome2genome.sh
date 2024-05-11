@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -N minimap2
-#PBS -l ncpus=16,walltime=4:00:00,storage=gdata/if89+gdata/xl04,mem=100GB
+#PBS -l ncpus=16,walltime=1:00:00,storage=gdata/if89+gdata/xl04,mem=100GB
 #PBS -j oe
 
 
