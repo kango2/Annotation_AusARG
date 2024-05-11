@@ -255,7 +255,7 @@ awk '$3 == "gene"' ${workingdir}/TrainingGene/Training_gene.gff3 | awk 'BEGIN {F
     }
     print $1"\t"$4"\t"$5"\t"$9"\t"$6"\t"$7
 }' > ${workingdir}/workingdir/Training_gene_No1Kbp.bed
-bedtools intersect -a ${workingdir}/workingdir/Training_gene_No1Kbp.bed -b ${workingdir}/workingdir/Training_gene_No1Kbp.bed -wa -wb | \
+bedtools intersect -a ${workingdir}/workingdir/Training_gene_No1Kbp.bed -b ${workingdir}/workingdir/Training_gene_No1Kbp.bed -wa -wb -s | \
 awk '$4 < $10 {print $4} $4 > $10 {print $10}' | sort | uniq > ${workingdir}/workingdir/overlapping_hints.list
 grep -w -v -f ${workingdir}/workingdir/overlapping_hints.list ${workingdir}/TrainingGene/Training_gene.gff3 | \
 awk 'BEGIN {FS="\t"; OFS="\t"} {
