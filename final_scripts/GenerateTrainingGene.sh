@@ -222,7 +222,7 @@ seqtk seq -C ${workingdir}/workingdir/transcriptome.pep.highQ.representative.fa 
 ### grep these out from gff3
 grep --no-filename -w -f ${workingdir}/workingdir/transcriptome.pep.highQ.representative.list ${workingdir}/TrainingGene/Merged/*highQ_with_UTRs.gff3 > ${workingdir}/TrainingGene/Training_gene.gff3
 
-### Find overlapping genes, get rid of one of them. 1kbp are added to either side of the gene so the 2kp flanking region generated later on will have no coding region
+### Find overlapping genes, get rid of all of them. 1kbp are added to either side of the gene so the 2kp flanking region generated from these gene later on will have no known coding region
 awk '$3 == "gene"' ${workingdir}/TrainingGene/Training_gene.gff3 | awk 'BEGIN {FS="\t"; OFS="\t"} 
 {
     if ($3 == "gene") {
@@ -238,26 +238,10 @@ awk '$3 == "gene"' ${workingdir}/TrainingGene/Training_gene.gff3 | awk 'BEGIN {F
 }' | awk 'BEGIN {FS="\t"; OFS="\t"} {if ($2 <= 0) {$2 = "1"} {print}}' > ${workingdir}/workingdir/Training_gene.bed
 
 bedtools intersect -a ${workingdir}/workingdir/Training_gene.bed -b ${workingdir}/workingdir/Training_gene.bed -wa -wb | \
-awk '$4 < $10 {print $4} $4 > $10 {print $10}' | sort | uniq > ${workingdir}/workingdir/overlapping.list
+awk '$4 != 10' | sort | uniq > ${workingdir}/workingdir/overlapping.list
 grep -w -v -f ${workingdir}/workingdir/overlapping.list ${workingdir}/TrainingGene/Training_gene.gff3 > ${workingdir}/TrainingGene/Training_gene_NoOverlap.gff3
 
-### Now the same thing for hints, but without the 1kbp, also process UTR into UTRpart and exon into exonpart
-awk '$3 == "gene"' ${workingdir}/TrainingGene/Training_gene.gff3 | awk 'BEGIN {FS="\t"; OFS="\t"} 
-{
-    if ($3 == "gene") {
-        split($9, parts, ";")
-        for (i in parts) {
-            split(parts[i], kv, "=")
-        }
-        $9 = parts[1]
-        sub(/\.gene$/, "", $9)
-        sub(/^ID=/, "", $9)
-    }
-    print $1"\t"$4"\t"$5"\t"$9"\t"$6"\t"$7
-}' > ${workingdir}/workingdir/Training_gene_No1Kbp.bed
-bedtools intersect -a ${workingdir}/workingdir/Training_gene_No1Kbp.bed -b ${workingdir}/workingdir/Training_gene_No1Kbp.bed -wa -wb -s | \
-awk '$4 < $10 {print $4} $4 > $10 {print $10}' | sort | uniq > ${workingdir}/workingdir/overlapping_hints.list
-grep -w -v -f ${workingdir}/workingdir/overlapping_hints.list ${workingdir}/TrainingGene/Training_gene.gff3 | \
+### Now Process the general gff3 for into gff3 hints format, We will not be getting rid of overlap and instead will provide these and let augustus decide which is better
 awk 'BEGIN {FS="\t"; OFS="\t"} {
         if ($3 == "intron") {
             split($9, parts, ";")
@@ -288,7 +272,7 @@ awk 'BEGIN {FS="\t"; OFS="\t"} {
             sub(/^Parent=/, "grp=", $9)
             print
         }
-    }' > ${workingdir}/TrainingGene/Hints.gff3
+    }' ${workingdir}/TrainingGene/Training_gene.gff3 > ${workingdir}/TrainingGene/Hints.gff3
 
 
 # Continue with TrainingAugustus.sh
