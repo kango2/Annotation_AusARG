@@ -18,7 +18,7 @@ cd ${workingdir}
 
 ### Loading modules
 module use /g/data/if89/apps/modulefiles
-module load perllib/v5.26.3
+module load perllib/v5.26.3 genometools/1.6.2
 module load seqtk/1.3
 module load AGAT/1.4.0
 module load pythonlib/3.9.2
