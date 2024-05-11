@@ -23,6 +23,7 @@ module load seqtk/1.3
 module load AGAT/1.4.0
 module load pythonlib/3.9.2
 module load cdhit/4.8.1
+module load bedtools/2.31.0
 
 mkdir -p ${workingdir}/highQ_cDNA
 mkdir -p ${workingdir}/highQ_CDS
@@ -34,7 +35,6 @@ mkdir -p ${workingdir}/Alignment_CDS
 mkdir -p ${workingdir}/workingdir
 mkdir -p ${workingdir}/TrainingGene
 mkdir -p ${workingdir}/TrainingGene/Merged
-
 # [ Section 1 ]
 ## Filter for high quality transcripts, then align them to genome
 ### criteria:
