@@ -1,27 +1,65 @@
 # Annotation_AusARG
-Repository to keep track of changes we are making to optimise the annotation scripts for the AusARG automatic genome assembly pipeline
 
-### Things to add/change:
-- Use Diamond instead of blast to do alignment of unfiltered transcriptome to uniprot-swissprot database.
-- Adjust blastxtranslation for Diamond output format.
-- Adjust blastxtranslation so it prints CDS/cDNA length information in fasta header of all output file for easy UTR calculation.
-- New minimap2 script to align transcriptome to genome with splice awareness. (instead of exonerate)
-- New script to convert minimap2 bam format output to gff3 output.
-- New script to calculate/infer UTR coordinates in genome based on cDNA alignment coordinates.
-- New script to filter for high-quality transcripts based on Diamond alignment and blastxtranslation results.
-- New script to get rid of redundant transcripts between different transcriptome generated from different samples. (cdhit-est)
-- New script to convert gff3 output into augustus hints.
-- Adjust bonus/malus in Augustus hints configuration file to accomodate our new hints. (extrinsic.cfg)
-- Can potentially Adjust training script so that it trains UTR meta parameters at the same time as exon parameters
+Gene annotation pipeline for AusARG genomes. Scripts here are designed to annotate new genomes generated from the AusARG assembly pipeline. The annotation pipeline is divided into three main parts/scripts:
+1. **GenerateTrainingGene** Generate high quality training genes for training Augustus, and generate Augustus hints.
+2. **TrainingAugustus** Generate new Augustus species-specific parameters and optimise it
+3. **RunningAugustus** Run gene prediction using trained parameters
 
-### Things to note
-- /scripts contain scripts that are being worked on.
-- /final_scripts contain scripts that are considered finished.
-- /test_data contain some test data.
-- /extrinsic contain the default extrinsic directory content in Augustus
-- /workingdir directory where I test scripts
-- extrinsic.MPE.cfg is the hints bonus/malus config file I have been using, I made a copy from /extrinsic to the master directory to work on it.
-- Need to adjust this config file so it make more sense, for example by default the feature "start" gets a malus of 0.8 if Augustus predicts a "start" at a region with no "start" hints supporting it. Our new hints file (or any old ones) by nature has no "start" feature in it to begin with, so all start predicted by Augustus automatically gets a 0.8 malus.
-- Our hints file only has exonpart and intronpart, so these are the only two feature we should configure
-- Or maybe we could change hints file to exon and intron
-- Augustus gene prediction step bottleneck is on the longest scaffold, for lizards (longest around 300Mbp) it takes 16-18 hours. Could potentially try out Pygustus which is a python version of augustus that the devs are making, it apparently is able to split scaffolds into pieces and run them in parallel, then merge them
+# Usage
+
+To run the pipeline for the first time on a new species, follow this progression:
+1 -> 2 -> 3
+To run the pipeline for a different genome of the same species (after initial run), follow this progression:
+1 -> 3
+
+# 1 Generate Training Gene
+~30 minutes to run
+
+Required Inputs:
+1. path to blastxtranslation outputs
+2. path to working directory
+3. path to soft-masked genome
+4. path to script directory
+
+Output
+```
+├── ${workingdir}
+│   └── TrainingGene
+│       └── Training_gene.gff3
+│   └── Hints
+│       └── Hints.gff3
+```
+
+# 2 Training Augustus
+~30 hours to run
+
+Required Inputs:
+1. name of species (with no whitespace)
+2. path to working directory
+3. path to soft-masked genome
+
+Output
+```
+├── ${workingdir}
+│   └── Augustus
+│       └── config (contains trained parameter for the new species)
+```
+
+# 3 Running Augustus
+~4 hours to run
+
+Required Inputs:
+1. name of species (with no whitespace)
+2. path to working directory
+3. path to soft-masked genome
+4. path to Augustus config (Except initial run)
+5. path to custom extrinsic file
+6. path to uniprot-swissprot diamond database
+7. path to uniprot-trembl diamond database
+
+Output
+```
+├── ${workingdir}/Augustus_annotation.gff3
+├── ${workingdir}/Augustus_peptide.fasta
+├── ${workingdir}/Augustus_gene_table.tabular (in TSV format)
+```
