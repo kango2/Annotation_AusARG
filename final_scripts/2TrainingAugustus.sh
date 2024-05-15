@@ -60,7 +60,7 @@ randomSplit.pl training_filtered.gb.train.test 200
 etraining --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training_filtered.gb.train.test
 ### Use 100 for first evaluation
 augustus --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training_filtered.gb.test | tee first_evaluation.out
-grep -A 36 Evaluation first_evaluation.out > ${workingdir}/first_evaluation.report
+grep -A 36 Evaluation first_evaluation.out > ${workingdir}/log/first_evaluation.report
 
 
 # Now we optimize with 500 genes, 200 for evaluation and all 500 for training, the max 5 rounds has been chosen but it will finish earlier if no improvement are found
@@ -81,7 +81,7 @@ etraining --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCD
 
 # final evaluation
 augustus --species=${species} --UTR=on --print_utr=on --stopCodonExcludedFromCDS=f ${workingdir}/Augustus/training/training_filtered.gb.test | tee final_evaluation.out
-grep -A 36 Evaluation final_evaluation.out > ${workingdir}/final_evaluation.report
+grep -A 36 Evaluation final_evaluation.out > ${workingdir}/log/final_evaluation.report
 
 
 
