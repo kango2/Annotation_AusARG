@@ -7,21 +7,21 @@ Gene annotation pipeline for AusARG genomes. Scripts here are designed to annota
 
 # Usage
 
-To run the pipeline for the first time on a new species, follow this progression:
-1 -> 2 -> 3
-To run the pipeline for a different genome of the same species (after initial run), follow this progression:
-1 -> 3
+To run the pipeline for the first time on a new species, follow this progression:  
+1 -> 2 -> 3  
+To run the pipeline for a different genome of the same species (after initial run), follow this progression:  
+1 -> 3  
 
 # 1 Generate Training Gene
-~30 minutes to run
+~30 minutes to run  
 
-Required Inputs:
+**Required Inputs:**
 1. path to blastxtranslation outputs
 2. path to working directory
 3. path to soft-masked genome
 4. path to script directory
 
-Output
+**Output:**
 ```
 ├── ${workingdir}
 │   └── TrainingGene
@@ -31,14 +31,14 @@ Output
 ```
 
 # 2 Training Augustus
-~30 hours to run
+~30 hours to run  
 
-Required Inputs:
+**Required Inputs:**
 1. name of species (with no whitespace)
 2. path to working directory
 3. path to soft-masked genome
 
-Output
+**Output:**
 ```
 ├── ${workingdir}
 │   └── Augustus
@@ -46,9 +46,9 @@ Output
 ```
 
 # 3 Running Augustus
-~4 hours to run
+~4 hours to run  
 
-Required Inputs:
+**Required Inputs:**
 1. name of species (with no whitespace)
 2. path to working directory
 3. path to soft-masked genome
@@ -57,7 +57,7 @@ Required Inputs:
 6. path to uniprot-swissprot diamond database
 7. path to uniprot-trembl diamond database
 
-Output
+**Output:**
 ```
 ├── ${workingdir}/Augustus_annotation.gff3
 ├── ${workingdir}/Augustus_peptide.fasta
