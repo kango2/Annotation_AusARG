@@ -15,7 +15,7 @@ To run the pipeline for a different genome of the same species (after initial ru
 # 1 Generate Training Gene
 ~30 minutes to run  
 
-**Required Inputs:**
+**Required Inputs (more info in script file):**
 1. path to blastxtranslation outputs
 2. path to working directory
 3. path to soft-masked genome
@@ -33,7 +33,7 @@ To run the pipeline for a different genome of the same species (after initial ru
 # 2 Training Augustus
 ~30 hours to run  
 
-**Required Inputs:**
+**Required Inputs (more info in script file):**
 1. name of species (with no whitespace)
 2. path to working directory
 3. path to soft-masked genome
@@ -48,7 +48,7 @@ To run the pipeline for a different genome of the same species (after initial ru
 # 3 Running Augustus
 ~4 hours to run  
 
-**Required Inputs:**
+**Required Inputs (more info in script file):**
 1. name of species (with no whitespace)
 2. path to working directory
 3. path to soft-masked genome
