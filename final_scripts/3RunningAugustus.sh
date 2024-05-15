@@ -61,7 +61,7 @@ createAugustusJoblist.pl --sequences=${workingdir}/RunningAugustus/GenomeChrIDs.
 chmod +x ${workingdir}/RunningAugustus/script/AugustusScript*
 
 
-## Running gene prediction
+## Running gene prediction in parallel
 parallel --jobs ${PBS_NCPUS} --no-notice "nice {}" < ${workingdir}/RunningAugustus/jobs.lst
 
 for x in $(cat ${workingdir}/RunningAugustus/jobs.lst)
@@ -69,16 +69,19 @@ do
     cat $(cat $x | perl -ne 'if(m/--outfile=(\S*) --errfile/){print $1}')
 done | join_aug_pred.pl > ${workingdir}/Augustus/annotation/augustus.gff
 
+## Process the output
 cd ${workingdir}/Augustus/annotation
 getAnnoFasta.pl augustus.gff
 grep -v "#" augustus.gff > augustus.gtf
 gtf2gff.pl < augustus.gtf --out=augustus.gff3 --gff3
 cp augustus.aa ${workingdir}/Augustus_peptide.fasta
 
+## cat error files into log, this will likely contain warnings about fully soft-masked sequences in the genome. This is normal
 cat ${workingdir}/Augustus/annotation/parallel/*.err > ${workingdir}/log/augustus.err
 
 
 cd ${workingdir}/Augustus/annotation_functional
+## Running diamond blastp to uniprot_sprot and uniprot_trembl
 diamond blastp --db ${uniprot_sprot} \
 --out blast_uniprot_sprot.out \
 --query ${workingdir}/Augustus/annotation/augustus.aa \
@@ -93,12 +96,15 @@ diamond blastp --db ${uniprot_trembl} \
 
 cat blast_uniprot_sprot.out blast_uniprot_trembl.out > blast_uniprot.out
 
+## combine gene ID with uniprot ID and gene name from blast results. Prints "unknown" if no uniprot hit
 join -1 1 -2 1 -t $'\t' -a 1 -e unknown -o1.1,2.2,2.3 <(awk 'BEGIN {FS="\t"; OFS="\t"} $3 == "gene" {sub(/;/, "", $9); sub(/^ID=/, "", $9); {print $9".t1"}}' ${workingdir}/Augustus/annotation/augustus.gff3 | sort -k1,1) \
 <(awk -F'\t' '{if ($13 ~ /GN=/) {split($13,a,"GN="); split(a[2],b," "); split($2, c, "|"); $2 = c[2]; print $1"\t"$2"\t" b[1]} else {split($2, c, "|"); print $1"\t"c[2]"\tunknown"}}' ${workingdir}/Augustus/annotation_functional/blast_uniprot.out | sort -k1,1) | \
 sort -k2 -V | awk -F'\t' -v OFS='\t' '{sub(/\.t1$/,"",$1); print "ID="$0}' | awk '{print $1";\t"$2"\t"$3}' > geneID_to_uniprotID.tabular
 
+## add uniprot ID to gff3 file as a new attribute in 9th column
 awk 'BEGIN{OFS=FS="\t"} NR==FNR{a[$1]=$2";gene_name="$3; next} $9 in a {$9=$9"uniprot_ID="a[$9]";"}1' geneID_to_uniprotID.tabular ${workingdir}/Augustus/annotation/augustus.gff3 > ${workingdir}/Augustus_annotation.gff3
 cd ${workingdir}
 
+## generate a tabular file with gene ID, midpoint, gene length, strand, uniprot ID and gene name
 awk -F'\t' '$3 == "gene" {midpoint = int(($4 + $5) / 2); split($9,a,"ID="); split(a[2],b,";"); split($9,c,"uniprot_ID="); split(c[2],d,";"); split($9,e,"gene_name="); split(e[2],f,";"); print $1"\t"midpoint"\t"$5-$4"\t"$7"\t"b[1]"\t"d[1]"\t"f[1]}' ${workingdir}/Augustus_annotation.gff3 | \
 sed $'1iContig\tMiddle position\tGene length\tStrand\tGene ID\tUniprot accession number\tGene name' > ${workingdir}/Augustus_gene_table.tabular
