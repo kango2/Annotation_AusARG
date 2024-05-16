@@ -25,7 +25,7 @@ To run the pipeline for a different genome of the same species (after initial ru
 ```
 ├── ${workingdir}
 │   └── TrainingGene
-│       └── Training_gene.gff3
+│       └── Training_gene_NoOverlap.gff3
 │   └── Hints
 │       └── Hints.gff3
 ```
