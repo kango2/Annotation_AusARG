@@ -14,6 +14,7 @@ To run the pipeline for a different genome of the same species (after initial ru
 
 # 1 Generate Training Gene
 ~30 minutes to run  
+Best to run it in interactive job or manually set $LANG to "" or the result could be different due to sorting  
 
 **Required Inputs (more info in script file):**
 1. path to blastxtranslation outputs
