@@ -102,7 +102,8 @@ join -1 1 -2 1 -t $'\t' -a 1 -e unknown -o1.1,2.2,2.3 <(awk 'BEGIN {FS="\t"; OFS
 sort -k2 -V | awk -F'\t' -v OFS='\t' '{sub(/\.t1$/,"",$1); print "ID="$0}' | awk '{print $1";\t"$2"\t"$3}' > geneID_to_uniprotID.tabular
 
 ## add uniprot ID to gff3 file as a new attribute in 9th column
-awk 'BEGIN{OFS=FS="\t"} NR==FNR{a[$1]=$2";gene_name="$3; next} $9 in a {$9=$9"uniprot_ID="a[$9]";"}1' geneID_to_uniprotID.tabular ${workingdir}/Augustus/annotation/augustus.gff3 > ${workingdir}/Augustus_annotation.gff3
+awk 'BEGIN{OFS=FS="\t"} NR==FNR{a[$1]=$2";gene_name="$3; next} $9 in a {$9=$9"uniprot_ID="a[$9]";"}1' geneID_to_uniprotID.tabular ${workingdir}/Augustus/annotation/augustus.gff3 | \
+sed $'1i##gff-version 3' > ${workingdir}/Augustus_annotation.gff3
 cd ${workingdir}
 
 ## generate a tabular file with gene ID, midpoint, gene length, strand, uniprot ID and gene name
