@@ -71,7 +71,7 @@ export var4=$(for i in $(ls ${workingdir}/Hints/Workingdir/weakerQ_cDNA/*.cdna.w
 export total=$((var1 + var2 + var3 + var4))
 
 # Submit script that runs after minimap2 finish
-export DEPEND_FOR_MINIMAP2=$(qsub -w depend=on:${total} -P ${PROJECT} -o ${workingdir}/log -v TRANSLATION_OUTPUT=${TRANSLATION_OUTPUT},workingdir=${workingdir},genome=${genome},scriptdir=${scriptdir} ${scriptdir}/1AutoSubmission/PostMinimap2.sh)
+export DEPEND_FOR_MINIMAP2=$(qsub -W depend=on:${total} -P ${PROJECT} -o ${workingdir}/log -v TRANSLATION_OUTPUT=${TRANSLATION_OUTPUT},workingdir=${workingdir},genome=${genome},scriptdir=${scriptdir} ${scriptdir}/1AutoSubmission/PostMinimap2.sh)
 
 # Submit minimap2 jobs
 export output=${workingdir}/TrainingGene/Workingdir/Alignment_CDS
