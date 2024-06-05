@@ -76,18 +76,18 @@ export DEPEND_FOR_MINIMAP2=$(qsub -W depend=on:${total} -P ${PROJECT} -o ${worki
 # Submit minimap2 jobs
 export output=${workingdir}/TrainingGene/Workingdir/Alignment_CDS
 for i in $(ls ${workingdir}/TrainingGene/Workingdir/highQ_CDS/*.cds.highQ.fa); do
-    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
 done
 export output=${workingdir}/TrainingGene/Workingdir/Alignment_cDNA
 for i in $(ls ${workingdir}/TrainingGene/Workingdir/highQ_cDNA/*.cdna.highQ.fa); do
-    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
 done
 ##
 export output=${workingdir}/Hints/Workingdir/Alignment_CDS
 for i in $(ls ${workingdir}/Hints/Workingdir/weakerQ_CDS/*.cds.weakerQ.fa); do
-    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
 done
 export output=${workingdir}/Hints/Workingdir/Alignment_cDNA
 for i in $(ls ${workingdir}/Hints/Workingdir/weakerQ_cDNA/*.cdna.weakerQ.fa); do
-    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
 done
