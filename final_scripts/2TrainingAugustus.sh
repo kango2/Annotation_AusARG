@@ -20,7 +20,7 @@ mkdir -p ${workingdir}/Augustus/config
 
 ### Loading modules
 module use /g/data/if89/apps/modulefiles
-module load Augustus/3.4.0 perllib/v5.26.3 blat/37 RepeatMasker/4.1.2-p1 scipio/1.4 pblat/2.5 pslCDnaFilter/0
+module load Augustus/3.4.0 perllib/v5.26.3 blat/37 RepeatMasker/4.1.2-p1 scipio/1.4 pblat/2.5 pslCDnaFilter/0 python3-as-python
 
 rsync -a $AUGUSTUS_CONFIG_PATH/ Augustus/config/
 export AUGUSTUS_CONFIG_PATH=${workingdir}/Augustus/config

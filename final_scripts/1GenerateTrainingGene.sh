@@ -24,7 +24,7 @@ module load AGAT/1.4.0
 module load pythonlib/3.9.2
 module load cdhit/4.8.1
 module load bedtools/2.31.0
-
+module load python3-as-python
 ### Making directory structure
 mkdir -p ${workingdir}/TrainingGene
 mkdir -p ${workingdir}/TrainingGene/Workingdir

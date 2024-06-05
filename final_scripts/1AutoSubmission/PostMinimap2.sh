@@ -13,7 +13,7 @@ module load AGAT/1.4.0
 module load pythonlib/3.9.2
 module load cdhit/4.8.1
 module load bedtools/2.31.0
-
+module load python3-as-python
 
 ## Run below after the minimap2 job finishes, each transcriptome should only take ~5 min
 for i in $(ls ${workingdir}/TrainingGene/Workingdir/Alignment_cDNA/*.bam); do
