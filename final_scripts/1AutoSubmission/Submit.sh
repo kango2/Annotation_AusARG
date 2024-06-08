@@ -73,22 +73,26 @@ export total=$((var1 + var2 + var3 + var4))
 
 # Submit script that runs after minimap2 finish
 export DEPEND_FOR_MINIMAP2=$(qsub -W depend=on:${total} -P ${PROJECT} -o ${workingdir}/log -v TRANSLATION_OUTPUT=${TRANSLATION_OUTPUT},workingdir=${workingdir},genome=${genome},scriptdir=${scriptdir} ${scriptdir}/1AutoSubmission/PostMinimap2.sh)
-
+sleep 1
 # Submit minimap2 jobs
 export output=${workingdir}/TrainingGene/Workingdir/Alignment_CDS
 for i in $(ls ${workingdir}/TrainingGene/Workingdir/highQ_CDS/*.cds.highQ.fa); do
     qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    sleep 1
 done
 export output=${workingdir}/TrainingGene/Workingdir/Alignment_cDNA
 for i in $(ls ${workingdir}/TrainingGene/Workingdir/highQ_cDNA/*.cdna.highQ.fa); do
     qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    sleep 1
 done
 ##
 export output=${workingdir}/Hints/Workingdir/Alignment_CDS
 for i in $(ls ${workingdir}/Hints/Workingdir/weakerQ_CDS/*.cds.weakerQ.fa); do
     qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    sleep 1
 done
 export output=${workingdir}/Hints/Workingdir/Alignment_cDNA
 for i in $(ls ${workingdir}/Hints/Workingdir/weakerQ_cDNA/*.cdna.weakerQ.fa); do
     qsub -W depend=beforeok:${DEPEND_FOR_MINIMAP2} -P ${PROJECT} -o ${workingdir}/log/PBS/$(basename ${i} .fa).OU -v genome=${genome},transcriptome=${i},output=${output} ${scriptdir}/minimap2_transcriptome2genome.sh
+    sleep 1
 done
