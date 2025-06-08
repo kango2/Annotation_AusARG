@@ -16,7 +16,7 @@ export genome="/g/data/xl04/jc4878/Bassiana_publication/YAHS/genome/BASDU_HifiAS
 # Point this to your previously trained config folder if coming from 1GenerateTrainingGene
 export AUGUSTUS_CONFIG="${workingdir}/Augustus/config"
 ### Path to custom extrinsic.cfg file
-export CUSTOM_EXTRINSIC="/g/data/xl04/jc4878/Annotation_AusARG/extrinsic.MPE_modded.cfg"
+export CUSTOM_EXTRINSIC="/g/data/xl04/jc4878/github/Annotation_AusARG/extrinsic.MPE_modded.cfg"
 ### Path to uniprot_swissprot diamond database
 export uniprot_sprot="/g/data/xl04/hrp561/basdurnaseq/uniprot_sprot.diamond.db.dmnd"
 ### Path to uniprot_trembl diamond database
